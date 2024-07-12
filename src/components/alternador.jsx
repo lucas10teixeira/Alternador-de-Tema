@@ -4,7 +4,7 @@ import './App.css';
 // Criando um contexto para o tema
 const ThemeContext = React.createContext();
 
-// Componente principal que representa a aplicação
+// Componente que representa a aplicação
 const App = () => {
   const [theme, setTheme] = useState('light'); // Estado inicial do tema
 
@@ -15,12 +15,9 @@ const App = () => {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className={`app ${theme}`}>
-        <div className="content">
-          <h1>Tema {theme === 'light' ? 'Claro' : 'Escuro'}</h1>
-          <ThemeToggler />
-          
-        </div>
+      <div className={`App ${theme}`}>
+        <h1>Aplicação com Tema {theme === 'light' ? 'Claro' : 'Escuro'}</h1>
+        <ThemeToggler />
       </div>
     </ThemeContext.Provider>
   );
@@ -31,8 +28,8 @@ const ThemeToggler = () => {
   const { toggleTheme } = useContext(ThemeContext);
 
   return (
-    <button onClick={toggleTheme} className="theme-toggler">
-      Alternar 
+    <button onClick={toggleTheme}>
+      Alternar Tema
     </button>
   );
 };
